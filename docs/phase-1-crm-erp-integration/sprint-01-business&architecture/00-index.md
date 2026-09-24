@@ -86,7 +86,7 @@ You can't design this without these concepts. Look each one up; you should be ab
 All deliverables go in the story's folder as markdown. Code (Prisma, Zod) is written as **drafts inside the markdown** for now; it moves into the Next.js app in Sprint 02.
 
 **us-01 → `us-01-integration-design.md`**
-- Sequence diagram as **Mermaid source** in the markdown (GitHub renders it; the PNG in [readme/](../../../readme/sequence-diagram.png) is only an export).
+- Sequence diagram as **Mermaid source** in the markdown (GitHub renders it; PNG files are only exports for presentations).
 - 1-page design: webhook vs polling decision and why; nightly reconciliation as a fallback for missed events; an edge-case table (HubSpot event → system action).
 - Diagram must show:
   - [ ] Invalid signature → 401, nothing else happens.

@@ -19,7 +19,7 @@
 * **Branch:** `story/p1-us-01-hubspot-quickbooks-flow`, from `sprint/p1-s01-business-architecture`
 * **Suggested commits** (us-01 was written before the repo existed, so these commit its current files):
   1. `docs(p1-us-01): add user story and knowledge notes` (`00-index.md`, `us-01-knowledge.md`)
-  2. `docs(p1-us-01): add v1 diagram and review findings` (`readme/sequence-diagram.png`, `us-01-finding.md`)
+  2. `docs(p1-us-01): add v1 diagram and review findings` (`us-01-diagram-v1.png`, `us-01-finding.md`)
   3. `docs(p1-us-01): add integration design and edge cases` (`us-01-integration-design.md`)
 
 ---
@@ -36,7 +36,7 @@ Create a Mermaid.js sequence diagram showing: HubSpot User $\rightarrow$ HubSpot
 
 ### As Built
 
-* **Deliverables:** [us-01-integration-design.md](us-01-integration-design.md) (webhook vs polling, decisions, key design details, 20 edge cases, diagram v3 with v1 kept for comparison), [us-01-finding.md](us-01-finding.md) (plain-language review of v1 for the business owner), [readme/sequence-diagram.png](../../../../readme/sequence-diagram.png) (v1 export). No code: this is a design story.
+* **Deliverables:** [us-01-integration-design.md](us-01-integration-design.md) (webhook vs polling, decisions, key design details, 20 edge cases, diagram v3 with v1 kept for comparison), [us-01-finding.md](us-01-finding.md) (plain-language review of v1 for the business owner), [us-01-diagram-v1.png](us-01-diagram-v1.png) (v1, re-rendered from its Mermaid source). No code: this is a design story.
 * **Decisions:**
   * Webhooks plus a nightly reconciliation job, over polling alone: speed and API quota. The nightly job covers outages longer than HubSpot's 24-hour retry window (built in Sprint 04).
   * Trigger on `lifecyclestage = customer`, over deal stage "Closed Won": a standard property, whereas deal pipelines differ between companies.

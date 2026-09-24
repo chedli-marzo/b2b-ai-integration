@@ -1,9 +1,9 @@
 # us-01 Findings: Review of the First Flow Diagram
 
-**Reviewed:** the first version of the HubSpot → QuickBooks flow diagram ([readme/sequence-diagram.png](../../../../readme/sequence-diagram.png)).
+**Reviewed:** the first version of the HubSpot → QuickBooks flow diagram ([us-01-diagram-v1.png](us-01-diagram-v1.png), re-rendered from its Mermaid source).
 **Verdict:** the diagram gets the normal case roughly right, but as drawn, the system would create **duplicate customers** and could **lose customers without anyone noticing**. It needs rework before it can be signed off.
 
-![First version of the flow diagram](../../../../readme/sequence-diagram.png)
+![First version of the flow diagram](us-01-diagram-v1.png)
 
 ---
 
