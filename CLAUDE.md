@@ -7,8 +7,10 @@ Portfolio project and learning vehicle. Owner is a senior full-stack JS engineer
 
 ## Map
 - `docs/00-index.md`: 5-phase blueprint (goal, gotcha, pro-tip, stack per phase).
-- `docs/phase-n-*/sprint-xx-*/us-yy-<name>.md`: user stories, the unit of work. Format reference: `docs/phase-1-crm-erp-integration/sprint-01-business&architecture/us-01-hubspot-quickbooks-flow.md`.
-- Naming: all files and folders lowercase kebab-case (except `CLAUDE.md`, `SKILL.md`). User stories: `us-NN-<max-3-words>.md`, words reflect the story, e.g. `us-02-data-mapping-sot.md`.
+- `docs/phase-n-*/sprint-xx-*/00-index.md`: sprint goal, stories, acceptance criteria for the business owner and for a junior dev.
+- `docs/phase-n-*/sprint-xx-*/us-yy-<name>/00-index.md`: the user story, the unit of work. Everything else for the story (knowledge file, designs, findings) lives in the same folder. Format reference: `docs/phase-1-crm-erp-integration/sprint-01-business&architecture/us-01-hubspot-quickbooks-flow/`.
+- `docs/phase-n-*/sprint-xx-*/us-yy-<name>/us-yy-knowledge.md`: Technical Knowledge, Business Knowledge, Interview and Client Notes for story us-yy (interview and client prep). Format reference: `us-01-knowledge.md` in the same folder.
+- Naming: all files and folders lowercase kebab-case (except `CLAUDE.md`, `SKILL.md`). User story folders: `us-NN-<max-3-words>/`, words reflect the story, e.g. `us-02-data-mapping-sot/`; the story itself is the folder's `00-index.md`. Other files in the folder use the same prefix, e.g. `us-01-integration-design.md`.
 
 ## Stack
 - App: Next.js (App Router) only: UI plus API route handlers, one app. Express and FastAPI are deferred to Phase 6.
@@ -26,7 +28,13 @@ Portfolio project and learning vehicle. Owner is a senior full-stack JS engineer
 - Everything under `docs/` is written in normal full English, never terse or caveman style. Business sections contain zero jargon.
 - Tick an acceptance-criteria checkbox only after it is verified (test run or command output shown).
 
+## Git
+- Sprint branch: `sprint/pN-sNN-<sprint-name>`, from `main`; merged into `main` when the sprint's definition of done is met. Named in the sprint's `00-index.md`.
+- Story branch: `story/pN-<story folder name>` (e.g. `story/p1-us-01-hubspot-quickbooks-flow`), from its sprint branch; merged back by pull request. Named, with suggested commits, in the story's Git section.
+- Commits: Conventional Commits with scope `pN-us-NN`, e.g. `docs(p1-us-01): add edge-case table`. Types: `feat`, `fix`, `test`, `docs`, `chore`.
+- Sprint and story branches need different prefixes: git can't hold a branch `x` and a branch `x/y` at the same time.
+
 ## Workflow
 `/story <sprint>` writes the next user stories → `/build <US>` implements one and appends As Built notes → `/drill tech|biz` practices interviews and client calls.
 
-Current: Phase 1, Sprint 01 (design docs, no code yet).
+Current: Phase 1, Sprint 01 (design docs, no code yet). us-01 done; next: us-02 data mapping.
