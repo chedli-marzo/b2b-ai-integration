@@ -1,25 +1,10 @@
-## User Story 3: Define Integration Requirements, Failure Scenarios, and Success Metrics
+# us-03 Knowledge: Define Integration Requirements, Failure Scenarios, and Success Metrics
 
-### User Story
-**As an** Engineering Manager,  
-**I want to** document non-functional requirements, failure modes, and success metrics,  
-**So that** the system is resilient, observable, and its business value can be measured objectively.
-
-### Acceptance Criteria
-* [ ] A "Failure Mode and Effects Analysis" (FMEA) document exists, detailing what happens when HubSpot is down, QuickBooks is down, or data is invalid.
-* [ ] Retry policies (e.g., exponential backoff) and Dead Letter Queue (DLQ) strategies are defined.
-* [ ] Success metrics (KPIs) are defined (e.g., "99% of valid webhooks synced within 60 seconds", "0 duplicate customers created").
-* [ ] An observability plan is documented (e.g., structured logging with correlation IDs, alerting on DLQ buildup).
-
-### Deliverables
-1. 1-page FMEA (Failure Mode and Effects Analysis) document.
-2. List of defined KPIs and SLAs for the integration.
-3. Architecture diagram highlighting the error-handling and observability flow (Correlation ID $\rightarrow$ Log $\rightarrow$ DLQ $\rightarrow$ Alert).
+Story: [00-index.md](00-index.md)
 
 ---
 
-### Technical Knowledge
-
+## Technical Knowledge
 * **What it is:** Planning for when things go wrong, because in distributed systems, they will go wrong.
 * **Why it matters:** An integration that works 95% of the time but silently fails 5% of the time is worse than no integration at all, because it creates false confidence and data drift.
 * **How it works:** Generate a `correlation_id` (UUID) on webhook receipt. Pass it to every log. If the QuickBooks API returns a 5xx, the background job retries with exponential backoff. If it returns a 4xx (bad data), it fails permanently and routes to a DLQ table, triggering a Slack alert.
@@ -34,8 +19,7 @@
 
 ---
 
-### Business Knowledge
-
+## Business Knowledge
 * **Business problem:** When integrations break silently, finance doesn't know until a customer complains about not receiving an invoice.
 * **Who is affected:** IT/Ops (firefighting), Finance (missing revenue), Management (lack of visibility).
 * **Cost of doing nothing:** "Silent failures" lead to lost revenue, compliance issues, and a complete loss of trust in the automation.
@@ -55,17 +39,7 @@
 
 ---
 
-### Practice Task
-Write a markdown document outlining the FMEA for 3 scenarios:
-1. QuickBooks API returns 400 (Invalid Data)
-2. QuickBooks API returns 503 (Service Unavailable)
-3. HubSpot sends the same webhook 3 times in 1 second  
-
-Define the exact system behavior for each.
-
----
-
-### Interview and Client Notes
+## Interview and Client Notes
 * **Technical Interview:** Use the phrase "Durable Execution" and "Dead Letter Queue." Mention that you never trust network calls to succeed on the first try.
 * **Discovery Call:** *"What is your current process for finding out if a HubSpot-to-QuickBooks sync failed? How long does it usually take to find out?"*
 * **Proposal:** Frame reliability not as a "technical feature," but as "Risk Mitigation and Operational Continuity."
